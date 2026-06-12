@@ -66,7 +66,7 @@ onAuthStateChanged(auth, async (user) => {
     document.getElementById("auth-screen").style.display = "none";
     document.getElementById("app-screen").style.display = "block";
     document.getElementById("header-user").textContent = currentUserData?.nome || user.email;
-    if (user.email === ADMIN_EMAIL) {
+    if (user.email === ADMIN_EMAIL || user.email === "marinhomateus6@gmail.com") {
       document.getElementById("admin-tab").style.display = "block";
       popularSelectSelecoes();
       carregarJogosAdmin();
