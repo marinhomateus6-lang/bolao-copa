@@ -11,7 +11,7 @@ const firebaseConfig = {
   appId: "1:115860864375:web:f43f736815bbf028953572"
 };
 
-const ADMIN_EMAIL = "COLOQUE_SEU_EMAIL_AQUI@gmail.com";
+const ADMIN_EMAIL = "Marinhomateus6@gmail.com";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
