@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Largados e Pelados ⚽</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="auth-screen" class="screen">
+  <div class="auth-box">
+    <div class="auth-logo">⚽</div>
+    <h1>Largados e Pelados</h1>
+    <p class="auth-sub">Copa do Mundo 2026 · R$70 em jogo</p>
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuth('login')">Entrar</button>
+      <button class="auth-tab" onclick="switchAuth('register')">Cadastrar</button>
+    </div>
+    <div id="login-form">
+      <input type="email" id="login-email" placeholder="Seu e-mail" />
+      <input type="password" id="login-pass" placeholder="Senha" />
+      <button class="btn-primary" onclick="doLogin()">Entrar</button>
+    </div>
+    <div id="register-form" style="display:none">
+      <input type="text" id="reg-name" placeholder="Seu nome" />
+      <input type="email" id="reg-email" placeholder="Seu e-mail" />
+      <input type="password" id="reg-pass" placeholder="Senha (mín. 6 caracteres)" />
+      <button class="btn-primary" onclick="doRegister()">Criar conta</button>
+    </div>
+    <p id="auth-error" class="error-msg"></p>
+  </div>
+</div>
+
+<div id="app-screen" class="screen" style="display:none">
+  <header class="app-header">
+    <div class="header-top">
+      <div>
+        <div class="header-logo">⚽ Largados e Pelados</div>
+        <div class="header-sub">Copa 2026 · R$70 em jogo</div>
+      </div>
+      <div class="header-right">
+        <span id="header-user"></span>
+        <button class="btn-logout" onclick="doLogout()">Sair</button>
+      </div>
+    </div>
+    <nav class="app-nav">
+      <button class="nav-tab active" onclick="showTab('hoje')">Hoje</button>
+      <button class="nav-tab" onclick="showTab('classificacao')">Classificação</button>
+      <button class="nav-tab" onclick="showTab('resultados')">Resultados</button>
+      <button class="nav-tab" id="admin-tab" style="display:none" onclick="showTab('admin')">Admin</button>
+    </nav>
+  </header>
+
+  <main class="app-main">
+
+    <div id="tab-hoje" class="tab-content active">
+      <div id="vencedor-rodada"></div>
+      <div class="section-label" id="hoje-label">Jogos de hoje</div>
+      <div id="jogos-hoje"></div>
+      <button class="btn-primary btn-salvar" id="btn-salvar" onclick="salvarPalpites()">Salvar palpites</button>
+      <p id="salvar-msg" class="success-msg"></p>
+    </div>
+
+    <div id="tab-classificacao" class="tab-content">
+      <div class="section-label">Classificação geral</div>
+      <div id="ranking-lista"></div>
+    </div>
+
+    <div id="tab-resultados" class="tab-content">
+      <div class="section-label">Jogos encerrados</div>
+      <div id="resultados-lista"></div>
+    </div>
+
+    <div id="tab-admin" class="tab-content">
+      <div class="section-label">Cadastrar jogo</div>
+      <div class="admin-card">
+        <select id="adm-time1"></select>
+        <div class="adm-vs">vs</div>
+        <select id="adm-time2"></select>
+        <input type="datetime-local" id="adm-horario" />
+        <input type="text" id="adm-grupo" placeholder="Ex: Grupo A" />
+        <button class="btn-primary" onclick="cadastrarJogo()">Adicionar jogo</button>
+        <p id="adm-msg" class="success-msg"></p>
+      </div>
+
+      <div class="section-label" style="margin-top:24px">Inserir resultado</div>
+      <div class="admin-card">
+        <select id="res-jogo"></select>
+        <div class="res-placar-row">
+          <input type="number" id="res-gols1" min="0" max="20" placeholder="0" />
+          <span class="adm-vs">x</span>
+          <input type="number" id="res-gols2" min="0" max="20" placeholder="0" />
+        </div>
+        <button class="btn-primary" onclick="inserirResultado()">Salvar resultado e calcular pontos</button>
+        <p id="res-msg" class="success-msg"></p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
